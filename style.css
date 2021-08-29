@@ -1,0 +1,88 @@
+body{
+    text-align:center;
+    background-color: black;
+    color:grey;
+}
+.container{
+    display:grid;
+    grid-template-areas: 
+        'player scoreboard computer'
+        'player control computer';
+    column-gap:5px;
+    row-gap:50px;
+    justify-content: space-around;
+    
+}
+.player-board{
+    width:30vw;
+    height:300px;
+      
+}
+#player{
+    grid-area:player;
+    background-color: rgb(100, 12, 12);
+    
+}
+#scoreboard{
+    grid-area:scoreboard;
+    background-color: silver;
+    width:400px;
+    height:150px;
+}
+#controls{
+    grid-area:control;
+    background-color: rgb(78, 77, 77);
+    height:200px;
+    margin-top:20px;
+}
+#control-words{
+    padding-top: 10px;;
+}
+#computer{
+    grid-area:computer;
+    background-color: rgb(46, 46, 90);
+}
+.player-icon{
+    height:20px ;
+}
+.player-details{
+    display:flex;
+    justify-content: center;
+    background-color: green;
+    height:20px;
+}
+#button{
+    height:100px;
+    margin-top:30px;
+    
+}
+.icons{
+    height:100px;
+    color:green;
+}
+
+@media (max-width: 1100px){
+    .player-details{
+        color:black;
+        background-color: green;
+    }
+    .player-board{
+        width:30vw;
+        height:300px;
+          
+    }
+    #scoreboard{
+        width:30vw;
+        height:100px;
+    }
+    #controls{
+        width:30vw;
+        height:150px
+    }
+    .icons{
+        height:7vw; 
+    }
+    #button{
+        margin-top: 30px;
+    }
+}
