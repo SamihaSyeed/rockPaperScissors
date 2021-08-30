@@ -100,10 +100,16 @@ body{
     }
     #scoreboard{
         width:35vw;
-        height:110px;
+        height:120px;
+                
+    }
+    .score-text{
+        font-size:12px;
+
     }
     .score-num{
-        margin-top:-9px;
+        margin-top:-11px;
+        font-size: 20px;
     }
     #controls{
         width:35vw;
@@ -116,10 +122,22 @@ body{
         margin-top: 30px;
     }
     .column{
-        height:75px;
-        margin-top:5px;
-        width:70px;
+        height:40px;
+       margin-top:-1px;
+        width:60px;
         padding:2px;
+        margin-left:-1px;
+                
+
+
     }
+    .score-columns{
+        display:grid;
+        grid-template-columns: 70px 70px;
+        row-gap: 6px;
+        
+        
+    }
+    
     
 }

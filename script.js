@@ -1,58 +1,71 @@
 /* variables for DOM manipulation */
 let winEl = document.querySelector('#wins')
-let lossEl = documnt.querySelector('#loss')
+let lossEl = document.querySelector('#loss')
 let drawEl = document.querySelector('#draws')
-let gamesEl = documnt.querySelector('#games')
+let gamesEl = document.querySelector('#games')
 let rockBtn = document.querySelector('#rock')
-let paperBtn = documnt.querySelector('#paper')
+let paperBtn = document.querySelector('#paper')
 let scissorsBtn = document.querySelector('#scissors')
 let btnDiv = document.querySelector('#button')
 
-let computerHand = Math.floor(Math.random()*3)+1
+let playerHandEl= document.querySelector('#p-hand')
+let computerHandEl =document.querySelector('#c-hand')
+
 let playerHand = null
 let wins = 0
 let loss = 0
 let draws = 0
 let games = 0
-winEl.textContent=0
-lossEl.textContent=loss
-drawEl.textContent=draws
-gamesEl.textContent=games
+
 const scores= () => {
-    if(playerHand == 1){
+    let computerHand = Math.floor(Math.random()*3)+1
+       if(playerHand == 1){
+        playerHandEl.textContent='rock'
         if(computerHand == 1){
+            computerHandEl.textContent='rock'
             draws++
             games++
         }else if(computerHand == 2){
+            computerHandEl.textContent='paper'
             loss++
             games++
         }else if(computerHand == 3){
+            computerHandEl.textContent='scissors'
             wins++
             games++
         }
     }else if(playerHand == 2){
+        playerHandEl.textContent='paper'
         if(computerHand == 2){
+            computerHandEl.textContent='paper'
             draws++
             games++
         }else if(computerHand == 3){
+            computerHandEl.textContent='scissors'
             loss++
             games++
         }else if(computerHand == 1){
+            computerHandEl.textContent='rock'
             wins++
             games++
         }
     }else if(playerHand == 3){
+        playerHandEl.textContent='scissors'
         if(computerHand == 3){
+            computerHandEl.textContent='scissors'
             draws++
             games++
         }else if(computerHand == 1){
+            computerHandEl.textContent='rock'
             loss++
             games++
         }else if(computerHand == 2){
+            computerHandEl.textContent='paper'
             wins++
             games++
         }
     }
+   
 
 }
 
