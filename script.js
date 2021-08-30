@@ -1,95 +1,90 @@
-let result= document.querySelector('#output')
-let computer= Math.floor(Math.random()*3)+1
-let hasWon= false
-let hasLost= false
-let playerScore=document.querySelector('#player-score')
-let computerScore=document.querySelector('#computer-score')
-let start= Number(prompt('How many Games would you like to play?'))
-let pScore=0
-let cScore=0
-let scoreEl= document.querySelector('#scores')
-let scores=''
+/* variables for DOM manipulation */
+let winEl = document.querySelector('#wins')
+let lossEl = document.querySelector('#loss')
+let drawEl = document.querySelector('#draws')
+let gamesEl = document.querySelector('#games')
+let rockBtn = document.querySelector('#rock')
+let paperBtn = document.querySelector('#paper')
+let scissorsBtn = document.querySelector('#scissors')
+let btnDiv = document.querySelector('#button')
 
-function game(){
-    let player= prompt('Choose your hand')
-    if(player.match(/rock/ig)){
-        switch(computer){
-            case 1:
-                result.textContent= 'You tied!'
-                hasWon=false
-                hasLost=false
-            case 2:
-                hasWon=false  
-                hasLost=true              
-                result.textContent= 'Paper beats Rock. You lose!'
-            case 3:
-                hasWon=true
-                hasLost=false
-                result.textContent= 'Rock beats Scissors. You win!'
+let playerHandEl= document.querySelector('#p-hand')
+let computerHandEl =document.querySelector('#c-hand')
 
+let playerHand = null
+let wins = 0
+let loss = 0
+let draws = 0
+let games = 0
+
+const scores= () => {
+    let computerHand = Math.floor(Math.random()*3)+1
+       if(playerHand == 1){
+        playerHandEl.textContent='rock'
+        if(computerHand == 1){
+            computerHandEl.textContent='rock'
+            draws++
+            games++
+        }else if(computerHand == 2){
+            computerHandEl.textContent='paper'
+            loss++
+            games++
+        }else if(computerHand == 3){
+            computerHandEl.textContent='scissors'
+            wins++
+            games++
         }
-    }else if(player.match(/paper/ig)){
-        switch(computer){
-            case 2:
-                hasWon=false
-                hasLost=false
-                result.textContent= 'You tied!'
-            case 1:
-                hasWon=true
-                hasLost=false
-                result.textContent= 'Paper beats Rock. You Win!'
-            case 3:
-                hasWon=false
-                hasLost=true
-                result.textContent= 'Scissors beats Paper. You Lose!'
-
+    }else if(playerHand == 2){
+        playerHandEl.textContent='paper'
+        if(computerHand == 2){
+            computerHandEl.textContent='paper'
+            draws++
+            games++
+        }else if(computerHand == 3){
+            computerHandEl.textContent='scissors'
+            loss++
+            games++
+        }else if(computerHand == 1){
+            computerHandEl.textContent='rock'
+            wins++
+            games++
         }
-    }else if(player.match(/scissors/ig)){
-        switch(computer){
-            case 3:
-                hasWon=false
-                hasLost=false
-                result.textContent= 'You Tied!'
-            case 1:
-                hasWon=false
-                hasLost=true
-                result.textContent= 'Rock beats Scissors. You Lose!'
-            case 2:
-                hasWon=true
-                hasLost=false
-                result.textContent= 'Scissors beats Paper. You Win!'
-
+    }else if(playerHand == 3){
+        playerHandEl.textContent='scissors'
+        if(computerHand == 3){
+            computerHandEl.textContent='scissors'
+            draws++
+            games++
+        }else if(computerHand == 1){
+            computerHandEl.textContent='rock'
+            loss++
+            games++
+        }else if(computerHand == 2){
+            computerHandEl.textContent='paper'
+            wins++
+            games++
         }
-    }else{
-        result.textContent='Wrong spelling. Play again'
     }
-
-    if(hasWon==true){
-        pScore++
-    }else if(hasLost==true){
-        cScore++
-    }
-    playerScore.textContent=pScore
-    computerScore.textContent=cScore
-
+   
 
 }
 
-function noOfGames(number){
-    for(let i=0; i<number; i++){
-    game(computer)
-}
-finalScore(pScore, cScore)
-}
-noOfGames(start)
-function finalScore(p, c){
-    if(p>c){
-        scores='You Win'
-    }else if(p<c){
-        scores='You Lose'
-    }else{
-        scores="draw"
-    }
+let hand = btnDiv.children
+let game = ()=>{
 
-    scoreEl.textContent=scores
+for( let i=0; i<hand.length; i++){
+    hand[i].addEventListener('click', ()=>{
+        playerHand = i+1
+        scores()
+        winEl.textContent=wins
+        lossEl.textContent=loss
+        drawEl.textContent=draws
+        gamesEl.textContent=games
+    })
 }
+
+}
+game()
+
+
+
